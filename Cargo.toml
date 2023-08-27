@@ -6,8 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anyhow = "1"
 bevy = { version = "0.11", default-features = false, features = ["bevy_asset"] }
 async-compat = "0.2.1"
+futures-lite = "1.12.0"
 reqwest = { version = "0.11.16", default-features = false }
 
 [dev-dependencies]
@@ -21,4 +23,4 @@ bevy = { version = "0.11", default-features = false, features = [
 
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
-crossbeam-channel = "0.5.7"
+crossbeam-channel = "0.5.8"
