@@ -1,4 +1,4 @@
-mod remote_asset;
 mod remote_asset_io;
+mod remote_asset_plugin;
 
-pub use remote_asset::RemoteAssetPlugin;
+pub use remote_asset_plugin::RemoteAssetPlugin;

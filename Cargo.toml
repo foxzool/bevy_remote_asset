@@ -8,9 +8,9 @@ edition = "2021"
 [dependencies]
 anyhow = "1"
 bevy = { version = "0.11", default-features = false, features = ["bevy_asset"] }
-async-compat = "0.2.1"
+ehttp = { version = "0.3.0", features = ["native-async"] }
 futures-lite = "1.12.0"
-reqwest = { version = "0.11.16", default-features = false }
+
 
 [dev-dependencies]
 bevy = { version = "0.11", default-features = false, features = [
@@ -21,6 +21,3 @@ bevy = { version = "0.11", default-features = false, features = [
     "x11", # GitHub Actions runners don't have libxkbcommon installed, so can't use Wayland
 ] }
 
-
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-crossbeam-channel = "0.5.8"

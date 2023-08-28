@@ -1,6 +1,5 @@
 use bevy::app::{App, Plugin};
 
-
 #[derive(Default)]
 pub struct RemoteAssetPlugin;
 
