@@ -2,6 +2,12 @@
 name = "bevy_remote_asset"
 version = "0.1.0"
 edition = "2021"
+description = "A Bevy plugin to load asset from web"
+readme = "README.md"
+repository = "https://github.com/foxzool/bevy_http_client"
+authors = ["FoxZoOL <zhooul@gmail.com>"]
+license = "MIT OR Apache-2.0"
+keywords = ["bevy", "wasm", "plugin"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
