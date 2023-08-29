@@ -15,16 +15,15 @@ impl AssetIo for RemoterAssetIo {
         if is_http(path) {
             let uri = path.to_str().unwrap();
 
-            let fut = Box::pin(async move {
+            Box::pin(async move {
                 let req = ehttp::Request::get(uri);
                 let bytes = ehttp::fetch_async(req)
+                    .await
                     .map_err(|_| AssetIoError::NotFound(path.to_path_buf()))?
-                    .bytes();
+                    .bytes;
 
                 Ok(bytes)
-            });
-
-            fut
+            }) as _
         } else {
             self.default_io.load_path(path)
         }
@@ -37,7 +36,7 @@ impl AssetIo for RemoterAssetIo {
     }
 
     fn get_metadata(&self, path: &Path) -> anyhow::Result<Metadata, AssetIoError> {
-        todo!()
+        self.default_io.get_metadata(path)
     }
 
     fn watch_path_for_changes(
@@ -45,10 +44,14 @@ impl AssetIo for RemoterAssetIo {
         to_watch: &Path,
         to_reload: Option<PathBuf>,
     ) -> anyhow::Result<(), AssetIoError> {
-        todo!()
+        if is_http(to_watch) {
+            Ok(())
+        } else {
+            self.default_io.watch_path_for_changes(to_watch, to_reload)
+        }
     }
 
     fn watch_for_changes(&self, configuration: &ChangeWatcher) -> anyhow::Result<(), AssetIoError> {
-        todo!()
+        self.default_io.watch_for_changes(configuration)
     }
 }
